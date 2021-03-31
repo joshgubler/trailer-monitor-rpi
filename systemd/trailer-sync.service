@@ -1,0 +1,14 @@
+[Unit]
+Description=Trailer Sync
+After=network.target
+
+[Service]
+ExecStart=./sync.sh
+WorkingDirectory=/home/pi/monitor/src/
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
