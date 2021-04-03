@@ -2,7 +2,7 @@
 
 ![Software component diagram](./doc/trailer-software.png)
 
-(dashed lines are not yet implemented)
+(Dashed lines are not yet implemented.)
 
 The core of my trailer monitoring system is a Raspberry Pi running a set of python and bash scripts. These scripts are scheduled with systemd.
 
