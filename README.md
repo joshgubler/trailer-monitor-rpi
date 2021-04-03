@@ -11,6 +11,8 @@ Breaking the problem up into a set of independent scripts provides several benef
 * Temporary failures of some parts of the system don't inhibit other parts of the system (e.g. snapshots will be captured even if S3 is unreachable)
 * Addition of new components is straightforward
 
+The hardware components and assembly can be found at [https://github.com/joshgubler/trailer-build#electrical](https://github.com/joshgubler/trailer-build#electrical).
+
 ## Location Monitoring
 
 [gps.py](./src/gps.py) periodically queries gpsd, which reads data from a USB GPS receiver. It then formats this data and writes it out as `data/gps.json`.
