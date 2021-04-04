@@ -55,3 +55,7 @@ Unfortunately, Growatt uses a common generic vendor and product id, which gpsd a
 [trailer-websocket.service](./systemd/trailer-websocket.service) is the systemd service which ensures websocket.py is always running.
 
 Currently the only websockets client is [the iOS app](https://github.com/joshgubler/trailer-monitor-ios).
+
+## VPN Client
+
+The raspberry pi also has a VPN client running, connecting back to my own VPN server. This allows me to connect to the pi from anywhere using a client-to-client VPN connection.
