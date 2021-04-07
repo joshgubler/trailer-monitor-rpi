@@ -78,5 +78,5 @@ if __name__ == '__main__':
         location = get_location(False)
         with open('../data/gps.json', 'w') as f:
             f.write(json.dumps(location))
-        time.sleep(5)
+        time.sleep(1)
 
