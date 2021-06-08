@@ -11,6 +11,9 @@ def location_event():
 def power_event():
     return json.dumps({ 'type': 'power', 'power' : util.read_power() })
 
+def cellular_event():
+    return json.dumps({ 'type': 'cellular', 'cellular' : util.read_cellular() })
+
 async def broadcast_message(message):
     if SESSIONS:
         await asyncio.wait([asyncio.create_task(session.send(message)) for session in SESSIONS])
@@ -20,6 +23,9 @@ async def broadcast_location():
 
 async def broadcast_power():
     await broadcast_message(power_event())
+
+async def broadcast_cellular():
+    await broadcast_message(cellular_event())
 
 async def register(websocket):
     SESSIONS.add(websocket)
@@ -32,6 +38,7 @@ async def server(websocket, path):
     try:
         await websocket.send(location_event())
         await websocket.send(power_event())
+        await websocket.send(cellular_event())
         async for message in websocket:
             pass
     finally:
@@ -49,7 +56,8 @@ async def main():
     await asyncio.gather(
             websockets.serve(server, "0.0.0.0", 8765),
             monitor_file('../data/gps.json', broadcast_location, 1),
-            monitor_file('../data/power.json', broadcast_power, 1)
+            monitor_file('../data/power.json', broadcast_power, 1),
+            monitor_file('../data/cellular.json', broadcast_cellular, 1)
           )
 
 if __name__ == '__main__':

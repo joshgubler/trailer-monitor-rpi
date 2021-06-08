@@ -15,8 +15,15 @@ def read_power():
     power = json.loads(power) if power else None
     return power
 
+def read_cellular():
+    cellular = None
+    with open('../data/cellular.json') as f:
+        cellular = f.read()
+    cellular = json.loads(cellular) if cellular else None
+    return cellular
+
 def combine_data():
-    return { 'location': read_location(), 'power': read_power() }
+    return { 'location': read_location(), 'power': read_power(), 'cellular': read_cellular() }
 
 def celsius_to_fahrenheit(value):
     if value is None:
