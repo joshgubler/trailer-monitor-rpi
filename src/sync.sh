@@ -2,7 +2,7 @@
 
 while true
 do
-	files=`ls ../data/ | grep '^20'`
+	files=`ls ../data/ | grep '^20'` || true #don't fail if there are no files
 	sleep 10 #to ensure files are done writing
 	for file in $files
 	do
